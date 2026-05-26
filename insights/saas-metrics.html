@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Five SaaS Metrics Every CFO Must Track | Croftlands Consulting</title>
+  <meta name="description" content="ARR, NRR, CAC payback, churn and LTV:CAC — the five metrics that define SaaS financial health and how to automate tracking them with Python." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="nav nav--page" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Croftlands <span>Consulting</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../services.html">Services</a>
+        <a href="../sectors.html">Sectors</a>
+        <a href="../case-studies.html">Case Studies</a>
+        <a href="../insights.html">Insights</a>
+        <a href="../contact.html" class="nav-cta">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="eyebrow">SaaS Finance &middot; Insight</span>
+      <h1>Five SaaS Metrics Every CFO Must Track — And How to Automate Them</h1>
+      <p class="lead">The metrics that define SaaS financial health are not on your P&amp;L. Here is what to track, why it matters, and how to eliminate the manual work of producing it.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="article-wrap">
+      <article class="article-content">
+
+        <p>A SaaS P&amp;L is, in isolation, almost useless as a tool for understanding whether a business is healthy. Revenue growth looks good until you discover that logo churn is accelerating. EBITDA looks strong until you realise that sales and marketing spend — the engine of future revenue — has been cut. Net loss looks bad until you understand that it reflects heavy investment in customer success that is driving NRR above 120%.</p>
+        <p>The five metrics below are the ones that a SaaS board, a PE investor, and a well-informed CFO use to build a genuine picture of the business. None of them appear directly on a standard management accounts pack. All of them should.</p>
+
+        <h2>1. Annual Recurring Revenue (ARR) — and Its Waterfall</h2>
+        <p>ARR is the annualised value of contracted recurring subscription revenue. It is not revenue — in a SaaS business with annual contracts and upfront billing, reported revenue in any given month may be largely deferred, while ARR reflects the actual scale of the recurring book.</p>
+        <p>What matters as much as the ARR figure itself is the <strong>ARR waterfall</strong> — the movement analysis between periods that shows:</p>
+        <ul>
+          <li><strong>New ARR</strong> — from new customers signed in the period</li>
+          <li><strong>Expansion ARR</strong> — from existing customers upgrading or buying more seats</li>
+          <li><strong>Contraction ARR</strong> — from existing customers downgrading</li>
+          <li><strong>Churned ARR</strong> — from customers who cancelled entirely</li>
+        </ul>
+        <p>Opening ARR + New + Expansion &minus; Contraction &minus; Churned = Closing ARR. This decomposition tells you far more than the headline number. A business growing ARR through expansion from existing customers is a fundamentally different — and typically more valuable — business than one growing by constantly replacing churned customers with new ones.</p>
+
+        <div class="highlight-box">
+          <p><strong>The automation opportunity:</strong> If your billing system (Stripe, Chargebee, etc.) exports subscription data, the ARR waterfall can be built entirely in Python from that export — no manual calculation, no spreadsheet errors, updated at the push of a button.</p>
+        </div>
+
+        <h2>2. Net Revenue Retention (NRR)</h2>
+        <p>NRR answers a simple question: if you signed no new customers at all this year, would your ARR be higher or lower than last year? It is calculated as:</p>
+        <p><strong>NRR = (Opening ARR + Expansion &minus; Contraction &minus; Churn) &divide; Opening ARR</strong></p>
+        <p>An NRR above 100% means the business grows even without new customer acquisition — existing customers are spending more over time. This is the hallmark of a great SaaS business and is the metric most closely scrutinised by growth investors.</p>
+        <p>World-class SaaS businesses achieve NRR of 120%+. A well-run mid-market SaaS business should target above 105-110%. NRR below 100% is a serious warning sign — the business is leaking revenue from its existing base and must acquire new customers just to stand still.</p>
+
+        <h2>3. Customer Acquisition Cost (CAC) and CAC Payback Period</h2>
+        <p>CAC is the fully-loaded cost of acquiring a new customer. This means all sales and marketing spend — salaries, commissions, advertising, events, tools — divided by the number of new customers acquired in the period.</p>
+        <p>The number that matters even more is the <strong>CAC payback period</strong>: how many months does it take to recover the cost of acquiring a customer from the gross margin that customer generates? The formula:</p>
+        <p><strong>CAC Payback (months) = CAC &divide; (Monthly ARR per customer &times; Gross Margin %)</strong></p>
+        <p>A payback period under 12 months is excellent. 12&ndash;24 months is typical for a healthy mid-market SaaS business. Above 24 months signals that either CAC is too high, gross margins are too thin, or pricing needs to increase. Above 36 months is a capital efficiency problem that will concern any PE or VC investor.</p>
+
+        <h2>4. Churn Rate — Two Ways</h2>
+        <p>Churn is the enemy of every SaaS business and must be measured in two distinct ways:</p>
+        <ul>
+          <li><strong>Logo churn</strong> — the percentage of customers who cancel in a period, regardless of their contract value. High logo churn from small customers may be acceptable if large customers are retained. Low logo churn that masks high revenue churn from large customers leaving is dangerous.</li>
+          <li><strong>Revenue churn</strong> — the percentage of ARR lost to cancellations in a period. This is the number that directly feeds your NRR calculation and your investor reporting.</li>
+        </ul>
+        <p>Both should be tracked monthly, trended over time, and segmented by customer cohort, customer size, product and geography. A churn model that scores <em>each customer</em> by probability of churn — built using a logistic regression or gradient boosting classifier on your customer data — is one of the highest-return analytical investments a SaaS business can make.</p>
+
+        <div class="highlight-box">
+          <p><strong>The automation opportunity:</strong> A churn prediction model built in Python (scikit-learn) on features like login frequency, feature adoption, support ticket volume and payment behaviour can identify at-risk customers weeks before they churn — giving customer success teams time to intervene.</p>
+        </div>
+
+        <h2>5. LTV:CAC Ratio</h2>
+        <p>Customer Lifetime Value (LTV) is the total gross margin a customer is expected to generate over their lifetime. Combined with CAC, the LTV:CAC ratio tells you whether your unit economics make sense:</p>
+        <p><strong>LTV = (Average ARR per customer &times; Gross Margin %) &divide; Revenue Churn Rate</strong></p>
+        <p><strong>LTV:CAC = LTV &divide; CAC</strong></p>
+        <p>A ratio above 3x is generally considered the benchmark for a viable SaaS unit model. Below 3x, the business is spending too much to acquire customers relative to what those customers are worth. Above 5x, the business may actually be under-investing in growth.</p>
+        <p>The LTV:CAC ratio also changes the conversation about churn. A 1% improvement in monthly churn rate has a dramatic non-linear effect on LTV — reducing churn from 2% to 1% per month nearly doubles LTV. This is why churn management deserves CFO-level attention, not just a line on the customer success OKRs.</p>
+
+        <h2>Automating the Dashboard</h2>
+        <p>All five of these metrics can be calculated automatically from your billing system and CRM data using Python (Pandas for data manipulation, Matplotlib or Seaborn for visualisation). A well-built Python script that runs monthly against a Stripe or Chargebee export will produce an ARR waterfall, NRR calculation, CAC payback and LTV:CAC ratio in seconds — with no manual spreadsheet work and no risk of formula errors.</p>
+        <p>This is not a theoretical aspiration. At Dext Software, the deferred revenue recognition, ARR waterfall and key metric reporting were fully automated within the first year of the finance transformation programme — reducing a manual process that took days into one that ran overnight and was ready for the board pack the following morning.</p>
+        <p>If your SaaS business is still producing these metrics manually in Excel, the efficiency and accuracy gains from automation are significant — and the investment required is smaller than you might expect.</p>
+
+        <hr class="divider" />
+        <p class="note"><em>Graeme Weeden is a CA(SA)-qualified CFO and founder of Croftlands Consulting Limited. He specialises in finance leadership and data-driven financial systems for PE-backed and founder-led SaaS businesses.</em></p>
+
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="sidebar-card">
+          <h4>Work With Croftlands Consulting</h4>
+          <p>If your SaaS business needs better financial visibility or a CFO who understands these metrics in depth, let&rsquo;s talk.</p>
+          <a href="../contact.html" class="btn btn-primary">Book a Discovery Call</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Articles</h4>
+          <div class="sidebar-related">
+            <a href="cashflow-model.html" class="related-link">Building a 12-Week Cashflow Model &rarr;</a>
+            <a href="finance-function.html" class="related-link">When Your Finance Function Is No Longer Fit for Purpose &rarr;</a>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Services</h4>
+          <div class="sidebar-related">
+            <a href="../services.html#data-analytics" class="related-link">Data &amp; Analytics &rarr;</a>
+            <a href="../services.html#fractional-cfo" class="related-link">Fractional CFO &rarr;</a>
+            <a href="../services.html#growth-modelling" class="related-link">Growth Modelling &rarr;</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2>Ready to Build Better Financial Visibility?</h2>
+      <p>Whether you need a fractional CFO, a data analytics build, or both — let&rsquo;s start with a conversation.</p>
+      <a href="../contact.html" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">Croftlands <span>Consulting</span></span>
+          <p>Senior finance leadership and data-driven financial systems for PE-backed and founder-led businesses.</p>
+          <div class="footer-contact">
+            <a href="mailto:graemeweeden@croftlandsconsulting.com"><i class="fa-solid fa-envelope" style="margin-right:0.5rem;color:var(--gold)"></i>graemeweeden@croftlandsconsulting.com</a>
+            <a href="tel:+447493513169"><i class="fa-solid fa-phone" style="margin-right:0.5rem;color:var(--gold)"></i>+44 7493 513 169</a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="../services.html#interim-cfo">Interim CFO</a></li><li><a href="../services.html#fractional-cfo">Fractional CFO</a></li><li><a href="../services.html#data-analytics">Data &amp; Analytics</a></li><li><a href="../services.html#growth-modelling">Growth Modelling</a></li></ul></div>
+        <div class="footer-col"><h4>Sectors</h4><ul><li><a href="../sectors.html#saas">SaaS</a></li><li><a href="../sectors.html#events">Events</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About</a></li><li><a href="../insights.html">All Insights</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Croftlands Consulting Limited. All rights reserved.</span>
+        <span>croftlandsconsulting.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building a 12-Week Cashflow Model | Croftlands Consulting</title>
+  <meta name="description" content="The architecture, assumptions and weekly discipline behind a 12-week rolling cashflow model — and how it prevented a liquidity crisis in a PE-backed events business." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="nav nav--page" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Croftlands <span>Consulting</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../services.html">Services</a>
+        <a href="../sectors.html">Sectors</a>
+        <a href="../case-studies.html">Case Studies</a>
+        <a href="../insights.html">Insights</a>
+        <a href="../contact.html" class="nav-cta">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="eyebrow">Cashflow &middot; Insight</span>
+      <h1>Building a 12-Week Cashflow Model That Actually Prevents a Crisis</h1>
+      <p class="lead">The difference between a cashflow model that sits in a drawer and one that saves the business is almost entirely in the discipline of how it is run — not the sophistication of the model itself.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="article-wrap">
+      <article class="article-content">
+
+        <p>Most businesses that run into a cashflow crisis did not lack warning. The warning was there — in the customer payment terms that were lengthening, in the supplier invoices that were being held, in the payroll timing that was becoming uncomfortable. What they lacked was a tool that made the problem visible early enough to act on it.</p>
+        <p>A properly built and properly maintained 12-week rolling cashflow model is that tool. This article describes how to build one, what makes it work in practice, and how it prevented a genuine liquidity crisis in a PE-backed events business.</p>
+
+        <h2>Why 12 Weeks?</h2>
+        <p>Twelve weeks is the operational horizon for cashflow management. It is long enough to see problems approaching — a payroll run in week eight, a large supplier invoice in week ten — but short enough that the data can be built from actual commitments rather than guesses. Beyond 12 weeks you are largely forecasting; within 12 weeks, most of your cash movements can be identified with reasonable confidence.</p>
+        <p>The model rolls forward every week: after each Monday, week one becomes history, weeks 2&ndash;12 become 1&ndash;11, and a new week 12 is added. This rolling discipline is what gives the model its value. A static cashflow forecast that was built once and updated monthly is almost useless — it is almost always wrong by the time anyone looks at it.</p>
+
+        <h2>The Architecture of the Model</h2>
+        <p>A working 12-week cashflow model has three sections:</p>
+
+        <h3>1. Opening Cash</h3>
+        <p>Start with the actual bank balance as of Monday morning — verified from the bank, not from the accounting system (which will typically be a few days behind). Any business that does not know its actual bank balance to within a few thousand pounds at any given moment has a cash management problem that the model cannot solve on its own.</p>
+
+        <h3>2. Cash Inflows — Built Line by Line</h3>
+        <p>Do not aggregate inflows. Build them from the receivables ledger, matched against the specific payment terms of each customer:</p>
+        <ul>
+          <li>List every outstanding invoice, when it is due, and when it is realistically expected to be paid (not the same thing)</li>
+          <li>For SaaS businesses, map subscription renewal dates and expected direct debit collections week by week</li>
+          <li>For events businesses, map deposit receipts (typically received months in advance) separately from balance payments (received close to the event date)</li>
+          <li>Apply a realistic collection lag — if your customers pay on average 15 days late, build that into the model, not the contractual terms</li>
+        </ul>
+
+        <h3>3. Cash Outflows — Every Known Payment</h3>
+        <p>The outflows section is where the model is won or lost. Every significant payment must be listed individually with its expected date:</p>
+        <ul>
+          <li>Payroll runs — the exact dates, not approximations</li>
+          <li>PAYE and NIC — one month after the payroll month</li>
+          <li>VAT — the precise due date based on your VAT quarter</li>
+          <li>Rent and rates — exact dates from the lease</li>
+          <li>Major supplier invoices — from the purchase order or invoice, not a general estimate</li>
+          <li>Loan or facility repayments — from the facility agreement</li>
+          <li>Any discretionary spend — with explicit approval required</li>
+        </ul>
+
+        <div class="highlight-box">
+          <p><strong>The discipline that matters most:</strong> Every week, the CFO reviews every inflow that did not arrive as expected and every outflow that was not in the model. No exceptions. Unexplained variances are the early warning system — they need to be chased, not noted and moved on.</p>
+        </div>
+
+        <h2>Scenario Planning Within the Model</h2>
+        <p>A single-scenario cashflow model is better than nothing. A three-scenario model is significantly more useful for board and investor reporting:</p>
+        <ul>
+          <li><strong>Base case</strong> — the model as built, with realistic assumptions</li>
+          <li><strong>Stress case</strong> — assume 20&ndash;30% of expected inflows are delayed by two weeks, and one or two large outflows arrive earlier than expected. What does the minimum cash position look like?</li>
+          <li><strong>Upside case</strong> — accelerated collections or a large receipt arriving early. Useful for planning deployment of surplus cash.</li>
+        </ul>
+        <p>The stress case is the one that prevents crises. If the stress case shows the business going below its minimum operating cash balance (or below its banking covenant) within 12 weeks, that is not a 12-week problem — it is a problem that needs to be solved today.</p>
+
+        <h2>What Happened at the PE-Backed Events Business</h2>
+        <p>When Graeme joined a PE-backed international events group as Interim CFO, cashflow was being managed reactively. There was no forward view beyond the next few weeks, and the finance team was handling cash queries from suppliers as they arrived rather than anticipating them.</p>
+        <p>Within the first three weeks, a detailed 12-week model was built — line by line, week by week, with three scenarios. The base case showed the business reaching a dangerously low cash position in week nine. The stress case showed it going negative.</p>
+        <p>The response was immediate: a decision was made to defer certain discretionary expenditure, to accelerate collection of two large receivables through direct contact with the customers, and to extend terms with one key supplier by four weeks. The liquidity gap was closed entirely within the existing resources of the business — no additional equity was required from the PE investor.</p>
+        <p>This was only possible because the problem was visible twelve weeks in advance. At six weeks, the options would have been fewer and more expensive. At two weeks, there would have been no options at all.</p>
+
+        <h2>Daily Cash Management</h2>
+        <p>Alongside the 12-week model, daily cash management adds an additional layer of control. Each morning, the actual bank position is compared to the expected position in the model. Any significant difference — either direction — is investigated and explained before the end of the day.</p>
+        <p>This daily rhythm also means that payment approvals become a conscious, real-time decision rather than a routine process. When every payment is reviewed against the 12-week model before being approved, discretionary spend is naturally controlled and prioritised without the need for a formal spending freeze.</p>
+
+        <h2>Building This in a Spreadsheet vs. Automating It</h2>
+        <p>For most businesses, a well-designed Excel model is the right tool for the 12-week cashflow — it is flexible, can be updated weekly by a finance manager, and is easily shared with the board and investors. The model should be locked down except for the weekly input cells, with all calculations formula-driven and scenario outputs automatically updating.</p>
+        <p>For businesses with a more complex or high-volume receivables book (common in SaaS), a Python-based approach that pulls the receivables data directly from the accounting system or billing engine can eliminate significant manual work and improve accuracy. The same logic applies — it is just that the data population is automated rather than manual.</p>
+
+        <hr class="divider" />
+        <p class="note"><em>Graeme Weeden is a CA(SA)-qualified CFO and founder of Croftlands Consulting Limited. He specialises in finance leadership and cashflow management for PE-backed and founder-led businesses.</em></p>
+
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="sidebar-card">
+          <h4>Need a Cashflow Model Built?</h4>
+          <p>Graeme can design and implement a 12-week cashflow model tailored to your business — typically within one to two weeks of starting an engagement.</p>
+          <a href="../contact.html" class="btn btn-primary">Get in Touch</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Articles</h4>
+          <div class="sidebar-related">
+            <a href="saas-metrics.html" class="related-link">Five SaaS Metrics Every CFO Must Track &rarr;</a>
+            <a href="finance-function.html" class="related-link">When Your Finance Function Is No Longer Fit for Purpose &rarr;</a>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Services</h4>
+          <div class="sidebar-related">
+            <a href="../services.html#growth-modelling" class="related-link">Growth Modelling &amp; Cashflow &rarr;</a>
+            <a href="../services.html#interim-cfo" class="related-link">Interim CFO &rarr;</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2>Is Your Cashflow Visibility Good Enough?</h2>
+      <p>If you are managing cash reactively, the right model can change the conversation — and potentially save the business.</p>
+      <a href="../contact.html" class="btn btn-primary">Book a Discovery Call</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">Croftlands <span>Consulting</span></span>
+          <p>Senior finance leadership and data-driven financial systems for PE-backed and founder-led businesses.</p>
+          <div class="footer-contact">
+            <a href="mailto:graemeweeden@croftlandsconsulting.com"><i class="fa-solid fa-envelope" style="margin-right:0.5rem;color:var(--gold)"></i>graemeweeden@croftlandsconsulting.com</a>
+            <a href="tel:+447493513169"><i class="fa-solid fa-phone" style="margin-right:0.5rem;color:var(--gold)"></i>+44 7493 513 169</a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="../services.html#interim-cfo">Interim CFO</a></li><li><a href="../services.html#fractional-cfo">Fractional CFO</a></li><li><a href="../services.html#growth-modelling">Growth Modelling</a></li></ul></div>
+        <div class="footer-col"><h4>Sectors</h4><ul><li><a href="../sectors.html#saas">SaaS</a></li><li><a href="../sectors.html#events">Events</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About</a></li><li><a href="../insights.html">All Insights</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Croftlands Consulting Limited. All rights reserved.</span>
+        <span>croftlandsconsulting.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

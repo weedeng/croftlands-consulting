@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(anthropic-skills:docx)",
+      "Skill(anthropic-skills:docx:*)",
+      "Read(//c/Users/graem/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/18cc6eaf-16c6-4926-b740-828529809986/cb64e6b3-2cd0-4c1f-8199-03eea6c12b36/skills/docx/**)",
+      "Bash(pandoc \"C:\\\\Users\\\\graem\\\\OneDrive - Croftlands Capital Ltd\\\\Graeme Personal\\\\CV\\\\Graeme Weeden  Finance Director CV.docx\" -t markdown)",
+      "Bash(pandoc --version)",
+      "PowerShell(Get-ChildItem \"G:\\\\My Drive\\\\GreatLearning - Applied AI and Data Science\" -Recurse -Depth 4 | Where-Object { $_.Extension -in \".ipynb\",\".py\",\".pdf\",\".docx\",\".pptx\" } | Select-Object FullName | Format-Table -AutoSize -Wrap)"
+    ]
+  }
+}
