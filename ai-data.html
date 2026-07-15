@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI &amp; Data Science | Croftlands Consulting</title>
+  <meta name="description" content="Machine learning and AI capabilities applied to finance — churn prediction, time-series cashflow forecasting, customer segmentation and LLM-powered reporting, deployed by a CFO who understands the business context." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav class="nav nav--page" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Croftlands <span>Consulting</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="ai-data.html">AI &amp; Data</a>
+        <a href="sectors.html">Sectors</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="insights.html">Insights</a>
+        <a href="contact.html" class="nav-cta">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── PAGE HERO ──────────────────────────────────────── -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="eyebrow">AI &amp; Data Science</span>
+      <h1>Where Machine Learning Meets the Finance Function</h1>
+      <p class="lead">This is not a traditional CFO practice with a Python side project. Every analytical capability listed here is grounded in 61 working models from the MIT Applied AI &amp; Data Science Program — and deployed directly in client engagements alongside board-level finance leadership.</p>
+    </div>
+  </section>
+
+  <!-- ── THE CAPABILITY STACK ───────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="eyebrow">The Capability Stack</span>
+      <h2>Four Ways AI Changes What a CFO Can Deliver</h2>
+      <p>Each capability below maps a specific machine learning technique to a finance outcome — with the methodology, the tools and the business context all understood by the same person deploying it.</p>
+    </div>
+    <div class="ai-stack-grid">
+
+      <div class="ai-stack-card">
+        <div class="stack-icon"><i class="fa-solid fa-brain"></i></div>
+        <h3>Predictive Analytics</h3>
+        <div class="tech-list">
+          <span class="tech-tag">XGBoost</span>
+          <span class="tech-tag">Random Forest</span>
+          <span class="tech-tag">Logistic Regression</span>
+          <span class="tech-tag">scikit-learn</span>
+        </div>
+        <p>Classification models trained on historical customer data to predict future behaviour. In a SaaS context this means a weekly churn risk score per account — a probability that a given customer will cancel in the next 30, 60 or 90 days. Features include login frequency, feature adoption rate, support ticket volume, payment behaviour and contract age. XGBoost and Random Forest consistently outperform simpler models on real SaaS datasets.</p>
+        <p>The same framework applies to attrition risk for PE portfolio companies, lead conversion probability from CRM data, and loan default risk in financial services. The model output is always actionable: a ranked list of accounts or individuals requiring intervention, with the probability score quantifying urgency.</p>
+      </div>
+
+      <div class="ai-stack-card">
+        <div class="stack-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <h3>Time Series Forecasting</h3>
+        <div class="tech-list">
+          <span class="tech-tag">ARIMA</span>
+          <span class="tech-tag">SARIMAX</span>
+          <span class="tech-tag">statsmodels</span>
+          <span class="tech-tag">Matrix Factorisation</span>
+        </div>
+        <p>Statistically-grounded forecasting models that replace manual extrapolation with techniques designed for time-dependent data. ARIMA (AutoRegressive Integrated Moving Average) handles non-seasonal series with trend — appropriate for rolling cashflow models and ARR run-rate forecasting. SARIMAX adds seasonal and exogenous variables — essential for events businesses with annual cycles and known external drivers (venue bookings, sponsor commitments).</p>
+        <p>The key practical difference from Excel: ARIMA/SARIMAX output includes confidence intervals, so boards see a range of outcomes rather than a single line that pretends to be certain. Stationarity testing (ADF test) and ACF/PACF analysis inform model selection. Applied directly in client work.</p>
+      </div>
+
+      <div class="ai-stack-card">
+        <div class="stack-icon"><i class="fa-solid fa-users"></i></div>
+        <h3>Customer Intelligence</h3>
+        <div class="tech-list">
+          <span class="tech-tag">K-Means</span>
+          <span class="tech-tag">Hierarchical Clustering</span>
+          <span class="tech-tag">DBSCAN</span>
+          <span class="tech-tag">PCA</span>
+          <span class="tech-tag">t-SNE</span>
+        </div>
+        <p>Unsupervised learning that finds natural structure in customer data without telling the algorithm what to look for. K-Means and hierarchical clustering reveal segments based on behaviour, contract value, product usage mix or acquisition channel. The resulting segments drive pricing strategy (which tier to price up), upsell targeting (which segment is ready for expansion), and renewal prioritisation (which segment is habitually at risk).</p>
+        <p>PCA and t-SNE reduce high-dimensional customer feature sets to two or three dimensions for visualisation — making segments legible in board presentations rather than buried in a spreadsheet. Applied to AllLife Bank customer segmentation and marketing campaign analysis in MIT capstone work.</p>
+      </div>
+
+      <div class="ai-stack-card">
+        <div class="stack-icon"><i class="fa-solid fa-robot"></i></div>
+        <h3>Generative AI &amp; LLM Pipelines</h3>
+        <div class="tech-list">
+          <span class="tech-tag">Claude API</span>
+          <span class="tech-tag">OpenAI GPT</span>
+          <span class="tech-tag">Zero-Shot</span>
+          <span class="tech-tag">Few-Shot</span>
+          <span class="tech-tag">Chain-of-Thought</span>
+        </div>
+        <p>Large language models applied to finance document workflows. The most mature use case is automated management commentary: actuals data is extracted from the ERP, variance calculations are computed in Python, and the Claude or OpenAI API generates the narrative — month-end commentary, variance explanations, board pack summaries — ready for CFO review. The finance team edits rather than writes from scratch.</p>
+        <p>Beyond reporting, LLM pipelines handle document summarisation (FDD reports, board papers, contracts), financial query answering on structured data, and quality assessment using an LLM-as-judge framework. Prompt engineering patterns — zero-shot, few-shot, chain-of-thought — are tuned to the finance domain for reliable, consistent output. Demonstrated in the MIT capstone Real-Time Retail Feedback Intelligence project.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── THE MIT CREDENTIAL ─────────────────────────────── -->
+  <section class="section section--dark">
+    <div class="section-header">
+      <span class="eyebrow">The Credential</span>
+      <h2>MIT Applied AI &amp; Data Science Program</h2>
+      <p>An 8-course, hands-on program taught by MIT faculty. Not an academic credential held at arm&rsquo;s length — 61 working Jupyter notebooks covering the full ML stack from statistical foundations through deep learning and generative AI, all applied to finance-equivalent problems.</p>
+    </div>
+    <div class="mit-courses-grid">
+      <div class="mit-course-card">
+        <span class="course-num">Pre-Work</span>
+        <h4>Generative AI Foundations</h4>
+        <p>LLM pipeline using Llama-2 for banking customer intent classification. Foundation for automated board commentary and document summarisation workflows.</p>
+      </div>
+      <div class="mit-course-card">
+        <span class="course-num">Course 1</span>
+        <h4>Statistical Foundations &amp; Python</h4>
+        <p>NumPy, Pandas, probability, hypothesis testing and statistical inference. Underpins all analytical work — financial data is just data, and these tools apply directly.</p>
+      </div>
+      <div class="mit-course-card">
+        <span class="course-num">Course 2</span>
+        <h4>Unsupervised Learning</h4>
+        <p>PCA, t-SNE, K-Means, DBSCAN, GMM, hierarchical clustering and network analysis (NetworkX). Applied to customer segmentation and relationship mapping.</p>
+      </div>
+      <div class="mit-course-card">
+        <span class="course-num">Course 3</span>
+        <h4>Supervised Learning</h4>
+        <p>KNN, logistic regression, SVM, decision trees, cross-validation. Employee attrition prediction — same classification framework as SaaS churn modelling.</p>
+      </div>
+      <div class="mit-course-card">
+        <span class="course-num">Course 4</span>
+        <h4>Ensemble Methods &amp; Time Series</h4>
+        <p>Random Forest, XGBoost, AdaBoost, Gradient Boosting. ARIMA and SARIMAX time-series forecasting applied to CPI, Bitcoin and crude oil — methodology used directly in cashflow models.</p>
+      </div>
+      <div class="mit-course-card">
+        <span class="course-num">Course 5</span>
+        <h4>Deep Learning</h4>
+        <p>ANNs, CNNs, Transformers in PyTorch. BERT fine-tuning for text classification. Transfer learning (VGG16, EfficientNet). Applied to financial document classification and text analytics.</p>
+      </div>
+      <div class="mit-course-card">
+        <span class="course-num">Course 6</span>
+        <h4>Recommendation Systems</h4>
+        <p>Collaborative filtering (KNN, SVD), matrix factorisation. Applied to SaaS product affinity and cross-sell targeting. Matrix factorisation for multi-stream revenue forecasting.</p>
+      </div>
+      <div class="mit-course-card">
+        <span class="course-num">Capstone</span>
+        <h4>End-to-End Projects</h4>
+        <p>Loan default prediction (own work, Random Forest). Marketing campaign segmentation (K-Means/GMM). Retail Feedback Intelligence — GPT pipeline with zero-shot, few-shot and chain-of-thought prompting.</p>
+      </div>
+    </div>
+    <div class="text-center mt-lg">
+      <a href="about.html" class="btn btn-outline">Full Profile &amp; Career Timeline &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ── IN PRACTICE ────────────────────────────────────── -->
+  <section class="section section--grey">
+    <div class="section-header">
+      <span class="eyebrow">In Practice</span>
+      <h2>How These Models Deploy in Client Engagements</h2>
+      <p>Each example below is a concrete deployment — not a proof of concept, but a working system built alongside CFO-level finance leadership in a real business.</p>
+    </div>
+    <div class="ai-deploy-grid">
+
+      <div class="ai-deploy-card">
+        <div class="service-icon" style="margin-bottom:1rem;"><i class="fa-solid fa-brain"></i></div>
+        <h3>SaaS Churn Risk Scoring</h3>
+        <p>A Random Forest or XGBoost classifier is trained on 12&ndash;24 months of customer behaviour data: login frequency, feature adoption, support ticket volume, payment behaviour and contract age. The model is re-scored weekly and produces a churn probability per account.</p>
+        <p>The output is a ranked list of at-risk customers — not a chart, but a prioritised intervention queue for the customer success team. The customer who was 8% risk last week and is 34% this week gets a call before the one who has been flat at 15% for a month.</p>
+        <div class="deploy-result">Typical result: 3&ndash;6 weeks of advance warning on accounts that would otherwise churn without notice.</div>
+      </div>
+
+      <div class="ai-deploy-card">
+        <div class="service-icon" style="margin-bottom:1rem;"><i class="fa-solid fa-chart-line"></i></div>
+        <h3>ARIMA 12-Week Cashflow</h3>
+        <p>The manual 12-week cashflow model is rebuilt as an ARIMA/SARIMAX time-series, trained on historical weekly cash movements. Stationarity is tested (ADF test), differencing applied where needed, and ACF/PACF plots used to select ARIMA order parameters.</p>
+        <p>The output is a 12-week forward forecast with a 95% confidence interval — so boards see the expected line and the range of plausible outcomes. For events businesses with seasonal receipt patterns, SARIMAX captures the seasonal component explicitly. Updated weekly, not rebuilt monthly.</p>
+        <div class="deploy-result">Applied directly at Raccoon Media Group to prevent a PE-backed cashflow shortfall.</div>
+      </div>
+
+      <div class="ai-deploy-card">
+        <div class="service-icon" style="margin-bottom:1rem;"><i class="fa-solid fa-robot"></i></div>
+        <h3>LLM Board Pack Commentary</h3>
+        <p>Actuals data is extracted from the ERP via API or CSV export. Python calculates the variances — actual vs. budget, actual vs. prior year, current month vs. prior month. These variances are passed to the Claude or OpenAI API with a finance-domain system prompt and few-shot examples of acceptable commentary style.</p>
+        <p>The API returns a first draft of the management commentary section — department by department, variance by variance. The CFO edits rather than writes from scratch, saving 2&ndash;4 hours per month-end cycle and improving consistency across reporting periods.</p>
+        <div class="deploy-result">From raw actuals to reviewed draft commentary in under 20 minutes.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── THE CLAUDE COWORK MODEL ───────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="eyebrow">Working with AI</span>
+      <h2>The Claude Cowork Model</h2>
+      <p>Croftlands Consulting does not just advise on AI adoption — it runs on it. Every analytical tool, financial model and client deliverable is built and maintained using Claude Code and the Anthropic API as active collaborators in the work.</p>
+    </div>
+    <div style="max-width:780px;margin:0 auto;">
+      <p>Most CFOs who talk about AI are referencing a vendor product they have seen demonstrated. This is different. The Claude API is used to build the finance tools themselves — generating Python code for churn models, writing and debugging ARIMA forecast scripts, automating data pipelines and producing first drafts of board commentary. Claude Code (Anthropic&rsquo;s AI coding assistant) is used to build and maintain the analytical infrastructure.</p>
+      <p>This means two things for clients. First, the turnaround on analytical tools is faster than traditional consulting — a churn scoring model or cashflow forecast can be prototyped, tested and deployed in days rather than weeks. Second, the tools are explainable: because the CFO understands the code and the methodology, they can explain to your board and your PE investor exactly how the churn probability was calculated and what assumptions drive the forecast.</p>
+      <p>It also means Croftlands Consulting can advise on your own AI adoption strategy from a position of genuine practical experience — not from a sales deck, but from running these systems in a live finance practice.</p>
+      <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary">Discuss Your Requirements</a>
+        <a href="insights/genai-cfo.html" class="btn btn-outline-dark">Read: GenAI for CFOs &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ────────────────────────────────────────────── -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2>Ready to Apply AI to Your Finance Function?</h2>
+      <p>Start with a conversation about what your data looks like and what questions you need answered. The right model follows from there.</p>
+      <a href="contact.html" class="btn btn-primary">Book a Discovery Call</a>
+      <p class="cta-detail">Or reach out directly: <a href="mailto:graemeweeden@croftlandsconsulting.com">graemeweeden@croftlandsconsulting.com</a></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">Croftlands <span>Consulting</span></span>
+          <p>AI-augmented finance leadership for PE-backed and founder-led businesses in SaaS, events and high-growth services.</p>
+          <div class="footer-contact">
+            <a href="mailto:graemeweeden@croftlandsconsulting.com"><i class="fa-solid fa-envelope" style="margin-right:0.5rem;color:var(--gold)"></i>graemeweeden@croftlandsconsulting.com</a>
+            <a href="tel:+447493513169"><i class="fa-solid fa-phone" style="margin-right:0.5rem;color:var(--gold)"></i>+44 7493 513 169</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#interim-cfo">Interim CFO</a></li>
+            <li><a href="services.html#fractional-cfo">Fractional CFO</a></li>
+            <li><a href="services.html#finance-build">Finance Build-Out</a></li>
+            <li><a href="services.html#data-analytics">Data &amp; Analytics</a></li>
+            <li><a href="services.html#automation">Process Automation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>AI &amp; Data</h4>
+          <ul>
+            <li><a href="ai-data.html#capability-stack">Capability Stack</a></li>
+            <li><a href="ai-data.html">MIT Programme</a></li>
+            <li><a href="insights/churn-prediction.html">Churn Prediction</a></li>
+            <li><a href="insights/arima-cashflow.html">ARIMA Cashflow</a></li>
+            <li><a href="insights/genai-cfo.html">GenAI for CFOs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Graeme</a></li>
+            <li><a href="sectors.html">Sectors</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="insights.html">Insights</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Croftlands Consulting Limited. All rights reserved.</span>
+        <span>Registered in England &amp; Wales &middot; croftlandsconsulting.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

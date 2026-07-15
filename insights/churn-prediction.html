@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predicting SaaS Churn with Machine Learning | Croftlands Consulting</title>
+  <meta name="description" content="How XGBoost and Random Forest classification models turn customer behaviour data into a weekly churn probability score — identifying at-risk accounts weeks before they cancel." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="nav nav--page" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Croftlands <span>Consulting</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../services.html">Services</a>
+        <a href="../ai-data.html">AI &amp; Data</a>
+        <a href="../sectors.html">Sectors</a>
+        <a href="../case-studies.html">Case Studies</a>
+        <a href="../insights.html">Insights</a>
+        <a href="../contact.html" class="nav-cta">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="eyebrow">AI &amp; Data Science &middot; Insight</span>
+      <h1>Predicting SaaS Churn with Machine Learning — Before It Happens</h1>
+      <p class="lead">How XGBoost and Random Forest classification models turn customer behaviour data into a weekly churn probability score — identifying at-risk accounts weeks before cancellation, while you can still do something about it.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="article-wrap">
+      <article class="article-content">
+
+        <p>Every SaaS finance leader knows the feeling: a customer cancels, and in hindsight the signals were there — declining login frequency, a support ticket that went unanswered, a renewal conversation that never happened. The problem with traditional churn analysis is that it is backward-looking. You measure churn after it has happened and ask why. Machine learning lets you measure churn risk before it happens and ask who.</p>
+
+        <p>This article explains how classification models — specifically Random Forest and XGBoost — can be applied to SaaS customer data to produce a weekly churn probability score per account, and what that score enables in practice.</p>
+
+        <h2>Why Churn Is a Classification Problem</h2>
+        <p>At its core, predicting churn is a binary classification task: for each customer, in the next 30, 60 or 90 days, will they churn (1) or not (0)? Classification algorithms learn from historical examples where the outcome is already known — customers who churned in the past — to recognise the pattern of features that preceded that churn.</p>
+        <p>The three steps are: engineer the features (what do we know about each customer right now?), train the model on historical data (which features predicted who churned?), and score every live customer on a recurring basis (who looks like a churner today?).</p>
+
+        <h2>Feature Engineering: What Do You Actually Know About a Customer?</h2>
+        <p>The quality of a churn model depends almost entirely on the quality of its input features. For a typical B2B SaaS business, the most predictive features fall into five categories:</p>
+
+        <ul>
+          <li><strong>Usage behaviour:</strong> login frequency over the last 7, 30 and 90 days; number of active users vs. licensed seats; feature adoption rate (what % of available features has the account ever used?); time since last meaningful session.</li>
+          <li><strong>Support signals:</strong> number of support tickets in the last 90 days; sentiment of recent tickets (if available); unresolved ticket count; escalated ticket history.</li>
+          <li><strong>Commercial signals:</strong> contract value; contract age; number of previous renewals; whether they came in on a discount; expansion or contraction since original contract.</li>
+          <li><strong>Payment behaviour:</strong> days overdue on most recent invoice; number of late payments in contract history; whether the direct debit has ever failed.</li>
+          <li><strong>Engagement signals:</strong> NPS score trend; attendance at webinars or training sessions; usage of the knowledge base; whether there is an active CSM relationship.</li>
+        </ul>
+
+        <p>You do not need all of these. A model with five well-chosen features often outperforms one with fifty poorly-chosen ones. Start with what you can extract cleanly from your billing system and your product usage data, and build from there.</p>
+
+        <div class="highlight-box">
+          <p><strong>Practical note:</strong> The hardest part of building a churn model is not the modelling — it is getting a clean, joined dataset. You will typically need to join: billing data (from Stripe, Chargebee or your ERP), product usage data (from your analytics platform or application database), support data (from Zendesk, Intercom etc.) and CRM data (from Salesforce, HubSpot etc.). A Python data pipeline using Pandas can handle this join — plan for this taking longer than expected.</p>
+        </div>
+
+        <h2>Model Choice: Why Random Forest and XGBoost</h2>
+        <p>Logistic regression is often the starting point for a classification problem — it is fast, interpretable and gives you a probability output. Use it as your baseline. If it produces acceptable precision and recall, it may be all you need.</p>
+
+        <p>Random Forest and XGBoost consistently outperform logistic regression on real SaaS datasets because churn prediction has two characteristics that suit ensemble methods:</p>
+        <ul>
+          <li><strong>Non-linear relationships:</strong> The relationship between feature values and churn probability is rarely linear. An account that logs in twice a week for three months and then drops to once a month is far more at risk than one that has always logged in once a month — but a linear model cannot capture this change signal without additional feature engineering.</li>
+          <li><strong>Feature interactions:</strong> A customer with declining logins AND a recent support ticket AND a contract up for renewal in 45 days is much more at risk than any one of those signals alone. Tree-based models capture these interactions naturally.</li>
+        </ul>
+
+        <p><strong>Random Forest</strong> builds many decision trees on random subsets of data and features, then averages their predictions. It is robust, handles missing data reasonably well, and provides built-in feature importance scores that tell you which signals are driving the predictions.</p>
+
+        <p><strong>XGBoost</strong> (Extreme Gradient Boosting) builds trees sequentially, each one correcting the errors of the previous. It typically achieves higher accuracy than Random Forest but is more sensitive to hyperparameter choices. For a SaaS churn model, the improvement over Random Forest is often marginal but worth testing.</p>
+
+        <h2>Model Evaluation: The Metrics That Matter</h2>
+        <p>Accuracy — the % of predictions that are correct — is the wrong metric for churn prediction. If 5% of your customers churn in a given quarter, a model that predicts &ldquo;no one will churn&rdquo; for every customer has 95% accuracy. It is useless.</p>
+
+        <p>The metrics that matter for a churn model are:</p>
+        <ul>
+          <li><strong>Precision:</strong> Of the accounts the model flagged as high-risk, what % actually churned? Low precision means the customer success team is wasting time on false alarms.</li>
+          <li><strong>Recall:</strong> Of the accounts that actually churned, what % did the model catch? Low recall means churners are slipping through without being flagged.</li>
+          <li><strong>F1 Score:</strong> The harmonic mean of precision and recall — useful when you need a single number to compare models.</li>
+          <li><strong>ROC-AUC:</strong> The area under the receiver operating characteristic curve — measures how well the model distinguishes churners from non-churners across all possible probability thresholds. A value above 0.80 is good for a SaaS churn model on real data.</li>
+        </ul>
+
+        <p>The trade-off between precision and recall is a business decision, not a technical one. A customer success team of 3 can only handle 20 flagged accounts per week — you want high precision. A high-value enterprise customer base where missing one churn costs £100k — you want high recall and are willing to accept more false positives.</p>
+
+        <h2>What the Output Looks Like in Practice</h2>
+        <p>Once trained, the model scores every active customer and assigns a churn probability — a number between 0 and 1. A score of 0.78 means the model estimates a 78% probability that this account will churn in the next 90 days based on its current feature values.</p>
+
+        <p>The output is delivered as a simple ranked table, updated weekly, that the customer success team works from the top down. It answers one question: who should I call first this week? The model does not tell the CSM what to say — that requires human relationship context — but it answers the prioritisation question with statistical rigour rather than gut feel.</p>
+
+        <p>The second output is <strong>feature importance</strong>. Random Forest and XGBoost both provide a score for each feature reflecting how much it contributed to predictions across the entire dataset. In a typical SaaS model, the top features are usually login frequency trend (change over 90 days), days to renewal, and support ticket volume. Feature importance makes the model explainable to a board — you can say exactly why an account was flagged, not just that the algorithm said so.</p>
+
+        <div class="highlight-box">
+          <p><strong>The change signal matters more than the level.</strong> An account that has always had low engagement is not necessarily at risk — that is just how they use the product. An account whose engagement has dropped 60% in 60 days is a churner, even if its absolute engagement level is still above average. Engineer your features to capture change (30-day trend, rolling averages) not just point-in-time values.</p>
+        </div>
+
+        <h2>Building This Into Finance Reporting</h2>
+        <p>From a CFO perspective, the churn model has a direct financial application beyond customer success prioritisation. The weekly probability scores can be used to build a statistically-grounded churn forecast: multiply each at-risk account&rsquo;s ARR contribution by its churn probability, sum across the book, and you have an expected churn figure for the next quarter based on the current risk profile of the customer base.</p>
+
+        <p>This feeds directly into the ARR waterfall forecast and the cashflow model. Instead of forecasting churn as &ldquo;same as last quarter&rdquo; or &ldquo;judgment call at 5%&rdquo;, you have a bottom-up, customer-by-customer estimate grounded in actual usage data. When you present this to a PE board, you can show them the methodology — and when they ask why churn is forecast to increase next quarter, you can point to the specific cohort of accounts that are showing elevated risk signals right now.</p>
+
+        <p>This is what machine learning actually delivers in a finance context: not magic, but a systematic, repeatable, explainable way to turn operational data into financial forecasts that are more accurate than gut feel.</p>
+
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="sidebar-card">
+          <h4>Related Service</h4>
+          <p>Churn risk scoring is part of the Data &amp; Analytics service — applied directly in SaaS client engagements.</p>
+          <a href="../services.html#data-analytics" class="btn btn-outline-dark">Data &amp; Analytics &rarr;</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>The Full AI Capability Stack</h4>
+          <p>Churn prediction is one of four ML capabilities deployed in client engagements.</p>
+          <a href="../ai-data.html" class="btn btn-outline-dark">AI &amp; Data Science &rarr;</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Insights</h4>
+          <div class="sidebar-related">
+            <a href="arima-cashflow.html" class="related-link">From Excel to ARIMA: Upgrading Your 12-Week Cashflow Model &rarr;</a>
+            <a href="genai-cfo.html" class="related-link">Generative AI for CFOs: What the Claude API Can Do &rarr;</a>
+            <a href="saas-metrics.html" class="related-link">Five SaaS Metrics Every CFO Must Track &rarr;</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2>Want a Churn Model Built for Your Business?</h2>
+      <p>Start with a conversation about what customer data you have available. The model design follows from there.</p>
+      <a href="../contact.html" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">Croftlands <span>Consulting</span></span>
+          <p>AI-augmented finance leadership for PE-backed and founder-led businesses.</p>
+          <div class="footer-contact">
+            <a href="mailto:graemeweeden@croftlandsconsulting.com"><i class="fa-solid fa-envelope" style="margin-right:0.5rem;color:var(--gold)"></i>graemeweeden@croftlandsconsulting.com</a>
+            <a href="tel:+447493513169"><i class="fa-solid fa-phone" style="margin-right:0.5rem;color:var(--gold)"></i>+44 7493 513 169</a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="../services.html#interim-cfo">Interim CFO</a></li><li><a href="../services.html#fractional-cfo">Fractional CFO</a></li><li><a href="../services.html#data-analytics">Data &amp; Analytics</a></li><li><a href="../services.html#automation">Process Automation</a></li><li><a href="../services.html#growth-modelling">Growth Modelling</a></li></ul></div>
+        <div class="footer-col"><h4>AI &amp; Data</h4><ul><li><a href="../ai-data.html">AI &amp; Data Science</a></li><li><a href="churn-prediction.html">Churn Prediction</a></li><li><a href="arima-cashflow.html">ARIMA Cashflow</a></li><li><a href="genai-cfo.html">GenAI for CFOs</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About Graeme</a></li><li><a href="../sectors.html">Sectors</a></li><li><a href="../case-studies.html">Case Studies</a></li><li><a href="../insights.html">Insights</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Croftlands Consulting Limited. All rights reserved.</span>
+        <span>Registered in England &amp; Wales &middot; croftlandsconsulting.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

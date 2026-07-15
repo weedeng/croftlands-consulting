@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generative AI for CFOs: What the Claude API Can Do in a Finance Team | Croftlands Consulting</title>
+  <meta name="description" content="How LLM pipelines using the Claude and OpenAI APIs automate board pack commentary, variance narratives and financial document analysis — with practical examples and the prompt engineering patterns that make them reliable." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="nav nav--page" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Croftlands <span>Consulting</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../services.html">Services</a>
+        <a href="../ai-data.html">AI &amp; Data</a>
+        <a href="../sectors.html">Sectors</a>
+        <a href="../case-studies.html">Case Studies</a>
+        <a href="../insights.html">Insights</a>
+        <a href="../contact.html" class="nav-cta">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="eyebrow">Generative AI &middot; Insight</span>
+      <h1>Generative AI for CFOs: What the Claude API Can Actually Do in a Finance Team</h1>
+      <p class="lead">How LLM pipelines using the Claude and OpenAI APIs automate board pack commentary, variance narratives and financial document analysis — with practical examples and the prompt engineering patterns that make them reliable enough to use in production.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="article-wrap">
+      <article class="article-content">
+
+        <p>The CFO spends an extraordinary amount of time writing text that is largely formulaic: variance commentary for the board pack, narrative descriptions of performance against budget, summaries of financial reports for non-finance stakeholders. These are not low-value activities — the board needs to understand what the numbers mean — but the actual writing is often repetitive: &ldquo;Revenue was £Xm, ahead of budget by £Yk, driven primarily by stronger-than-expected performance in [segment].&rdquo; Large language models can draft this text reliably, accurately and in seconds, from structured financial data.</p>
+
+        <p>This article is about the practical mechanics of building these pipelines using the Claude API and OpenAI GPT — what the inputs are, how the prompts are structured, and what the output quality is like in practice. It is not about using a general-purpose chatbot. It is about building a repeatable, automated pipeline that runs as part of the monthly close process.</p>
+
+        <h2>The Problem LLMs Actually Solve in Finance</h2>
+        <p>Generative AI does not replace financial judgment. It does not set strategy, challenge assumptions, or tell you whether the revenue growth is real or a result of a change in recognition policy. What it does well is producing first-draft prose from structured data — which is exactly what board commentary is.</p>
+
+        <p>The monthly board pack typically contains several narrative sections that follow predictable structures:</p>
+        <ul>
+          <li><strong>P&amp;L commentary:</strong> Revenue and gross margin versus budget and prior year; key drivers of variances; operating cost movements; EBITDA bridge narrative.</li>
+          <li><strong>Cashflow commentary:</strong> Opening and closing cash; key inflows and outflows; movements in working capital; covenant headroom.</li>
+          <li><strong>KPI narrative:</strong> Explanation of movements in key metrics — for SaaS, ARR, NRR, churn, CAC payback; for events, forward bookings, yield per delegate, event margin.</li>
+          <li><strong>Risk and outlook:</strong> Material risks to the forecast; key assumptions behind the next period outlook.</li>
+        </ul>
+
+        <p>A CFO who writes these sections manually typically spends 3&ndash;5 hours on commentary per board pack cycle. The actual analysis takes 20 minutes; the writing takes the rest. An LLM pipeline can draft all four sections in under 30 seconds from the actuals data. The CFO&rsquo;s job becomes reviewing and refining the draft rather than producing it from scratch — a much more efficient use of senior finance time.</p>
+
+        <h2>The Pipeline Architecture</h2>
+        <p>The technical pipeline has three stages: data extraction, prompt construction, and API call.</p>
+
+        <p><strong>Stage 1: Data extraction.</strong> The actuals data is extracted from the ERP or management reporting system as a structured format — typically a CSV or JSON. For a monthly P&amp;L, this means: actual revenue this month, budget revenue this month, prior year revenue, the same for each major cost line, and a computed variance table. Python (with Pandas) handles this extraction and transformation. The output is a clean, structured Python dictionary containing the numbers the LLM needs.</p>
+
+        <p><strong>Stage 2: Prompt construction.</strong> The prompt is assembled programmatically by injecting the extracted data into a template. The prompt has three components:</p>
+        <ul>
+          <li>A <strong>system message</strong> that defines the context: &ldquo;You are a senior CFO writing the finance commentary for the monthly board pack of [Company]. Write in professional finance language, British English. Be direct and specific. Focus on the key variances and their drivers. Do not include generic filler statements.&rdquo;</li>
+          <li>A <strong>data block</strong> that injects the structured financial data — the actuals, budget, prior year, and computed variances — in a clean format the model can parse.</li>
+          <li>A <strong>task instruction</strong> that specifies exactly what to write: &ldquo;Write the P&amp;L commentary section (200&ndash;300 words). Cover: (1) revenue versus budget and PY, key drivers; (2) gross margin movement; (3) operating cost movements; (4) EBITDA bridge.&rdquo;</li>
+        </ul>
+
+        <p><strong>Stage 3: API call.</strong> The assembled prompt is sent to the Claude API (using Anthropic&rsquo;s Python SDK) or the OpenAI API. The response is the draft commentary text. The Python script saves it to a file, pastes it into the board pack template, or emails it to the CFO for review — whichever is most useful in the specific workflow.</p>
+
+        <h2>Prompt Engineering: What Makes It Reliable</h2>
+        <p>The difference between an LLM commentary pipeline that is useful in production and one that produces unreliable output is almost entirely in the prompt engineering. Four patterns make the difference:</p>
+
+        <p><strong>Be specific about what &ldquo;good&rdquo; looks like.</strong> Vague instructions produce generic output. &ldquo;Write finance commentary&rdquo; produces boilerplate. &ldquo;Write 200&ndash;250 words of P&amp;L commentary. Open with the revenue figure and the budget variance. State the three key drivers in order of materiality. Close with the EBITDA outturn.&rdquo; produces structured, useful output that follows a consistent template every month.</p>
+
+        <p><strong>Give it the numbers in a clean structure.</strong> LLMs are not calculators — they can make arithmetic errors when working from unstructured text. Extract the numbers in Python, compute all variances explicitly, and inject the computed results into the prompt as a structured block. The model&rsquo;s job is to narrate the variances, not to derive them. This eliminates a whole category of potential errors.</p>
+
+        <p><strong>Use few-shot examples for format.</strong> If you have a board pack commentary that the board liked — ideally from the prior month — include it in the prompt as an example of the target format and style: &ldquo;Here is an example of commentary in the correct format and style: [example]. Write this month&rsquo;s commentary in the same style.&rdquo; This few-shot approach produces output that matches the specific style and level of formality the board expects, rather than generic finance language.</p>
+
+        <p><strong>Chain-of-thought for complex analysis.</strong> For commentary that requires reasoning across multiple data points — for example, an EBITDA bridge narrative that needs to reconcile six line items — a chain-of-thought instruction improves reliability: &ldquo;First list the five largest variances in order of size. Then write the narrative, addressing each in that order.&rdquo; Asking the model to reason step-by-step before producing output reduces the risk of it skipping material items.</p>
+
+        <div class="highlight-box">
+          <p><strong>Always review the output.</strong> A well-engineered pipeline produces commentary that is correct and useful the vast majority of the time — but it still needs CFO review before it goes to a board. The model does not know about the context the numbers don&rsquo;t capture: the customer who negotiated a side deal, the cost that was re-classified, the one-off that distorts the comparison. Treat the LLM output as a high-quality first draft, not a finished product. The efficiency gain is in going from zero to 80% in 30 seconds, not in eliminating the review.</p>
+        </div>
+
+        <h2>Other Finance Applications</h2>
+        <p>Board commentary is the clearest use case, but the same pipeline architecture applies to several other finance tasks:</p>
+
+        <ul>
+          <li><strong>Variance narrative for management accounts:</strong> The same approach produces department-level commentary from cost centre actuals — useful for business partner reporting where the volume of commentary is high but each section is short.</li>
+          <li><strong>Financial document summarisation:</strong> Long contracts, facility agreements, or investor reports can be summarised reliably using a system prompt that focuses the model on specific clauses: &ldquo;Extract and summarise: (1) the financial covenants, (2) the restricted payment provisions, (3) the events of default.&rdquo; This works well for due diligence support where volume is high.</li>
+          <li><strong>Investor report drafting:</strong> PE portfolio reporting typically follows a consistent template. LLM-assisted drafting can produce the narrative sections from the underlying data, with the GP adding judgment on strategic items.</li>
+          <li><strong>Audit response drafting:</strong> Standard audit queries on accounting policy and disclosure often have standard answers. An LLM pipeline that retrieves the relevant policy documentation and drafts the response can significantly reduce the time the finance team spends on audit support.</li>
+        </ul>
+
+        <h2>Claude vs. GPT: Which One to Use</h2>
+        <p>Both Claude (Anthropic) and GPT-4 (OpenAI) produce high-quality output for finance commentary tasks. The practical differences are:</p>
+
+        <ul>
+          <li><strong>Claude</strong> tends to produce more consistently well-structured output from detailed system prompts. It is particularly good at following complex formatting instructions and maintaining a consistent tone across a long document. The Anthropic API is clean and well-documented.</li>
+          <li><strong>GPT-4</strong> is slightly more creative in its language, which can be a strength for external-facing narrative but a slight risk for internal board commentary where a consistent, formal voice is preferred. The OpenAI ecosystem has more tooling around it, which matters if you are building a more complex product.</li>
+        </ul>
+
+        <p>For internal finance commentary, Claude is the default choice. For applications where the output is more varied or creative — external investor communications, for example — the differences are marginal and either works well.</p>
+
+        <p>The more important factor is the quality of the prompt. A well-engineered prompt produces excellent output from either model; a poorly structured prompt produces mediocre output from both. Investment in prompt engineering pays off across the board — and the same system prompt, carefully refined once, can run every monthly close cycle for the entire engagement without modification.</p>
+
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="sidebar-card">
+          <h4>Related Service</h4>
+          <p>LLM-generated board pack commentary is a core component of the Process Automation service.</p>
+          <a href="../services.html#automation" class="btn btn-outline-dark">Process Automation &rarr;</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>The Full AI Capability Stack</h4>
+          <p>Generative AI is one of four ML capabilities Croftlands deploys in client engagements — alongside predictive analytics, time-series forecasting, and customer segmentation.</p>
+          <a href="../ai-data.html" class="btn btn-outline-dark">AI &amp; Data Science &rarr;</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>Related Insights</h4>
+          <div class="sidebar-related">
+            <a href="churn-prediction.html" class="related-link">Predicting SaaS Churn with Machine Learning &rarr;</a>
+            <a href="arima-cashflow.html" class="related-link">From Excel to ARIMA: Upgrading Your 12-Week Cashflow Model &rarr;</a>
+            <a href="saas-metrics.html" class="related-link">Five SaaS Metrics Every CFO Must Track &rarr;</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2>Want to Automate Your Board Pack Commentary?</h2>
+      <p>A conversation about your current board pack structure and ERP setup is the right starting point.</p>
+      <a href="../contact.html" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">Croftlands <span>Consulting</span></span>
+          <p>AI-augmented finance leadership for PE-backed and founder-led businesses.</p>
+          <div class="footer-contact">
+            <a href="mailto:graemeweeden@croftlandsconsulting.com"><i class="fa-solid fa-envelope" style="margin-right:0.5rem;color:var(--gold)"></i>graemeweeden@croftlandsconsulting.com</a>
+            <a href="tel:+447493513169"><i class="fa-solid fa-phone" style="margin-right:0.5rem;color:var(--gold)"></i>+44 7493 513 169</a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="../services.html#interim-cfo">Interim CFO</a></li><li><a href="../services.html#fractional-cfo">Fractional CFO</a></li><li><a href="../services.html#data-analytics">Data &amp; Analytics</a></li><li><a href="../services.html#automation">Process Automation</a></li><li><a href="../services.html#growth-modelling">Growth Modelling</a></li></ul></div>
+        <div class="footer-col"><h4>AI &amp; Data</h4><ul><li><a href="../ai-data.html">AI &amp; Data Science</a></li><li><a href="churn-prediction.html">Churn Prediction</a></li><li><a href="arima-cashflow.html">ARIMA Cashflow</a></li><li><a href="genai-cfo.html">GenAI for CFOs</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About Graeme</a></li><li><a href="../sectors.html">Sectors</a></li><li><a href="../case-studies.html">Case Studies</a></li><li><a href="../insights.html">Insights</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Croftlands Consulting Limited. All rights reserved.</span>
+        <span>Registered in England &amp; Wales &middot; croftlandsconsulting.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
