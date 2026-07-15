@@ -277,6 +277,7 @@ p  { color: var(--text-mid); }
   color: var(--white);
   line-height: 1;
   margin-bottom: 0.3rem;
+  font-variant-numeric: lining-nums;
 }
 .hero-stat .label {
   font-size: 0.72rem;
