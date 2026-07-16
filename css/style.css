@@ -1102,3 +1102,24 @@ p  { color: var(--text-mid); }
   .ai-deploy-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 580px) { .mit-courses-grid { grid-template-columns: 1fr; } }
+
+/* === 100-DAY PLAN — DRIVER GRID === */
+.driver-grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.driver-card {
+  background: var(--white);
+  border: 1px solid var(--grey-border);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+}
+.driver-card .driver-icon { color: var(--gold); font-size: 1.4rem; margin-bottom: 0.9rem; }
+.driver-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.driver-card p { font-size: 0.85rem; color: var(--text-mid); margin: 0; }
+@media (max-width: 900px) { .driver-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .driver-grid { grid-template-columns: 1fr; } }
