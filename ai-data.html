@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI &amp; Data Science | Croftlands Consulting</title>
-  <meta name="description" content="Machine learning and AI capabilities applied to finance — churn prediction, time-series cashflow forecasting, customer segmentation and LLM-powered reporting, deployed by a CFO who understands the business context." />
+  <meta name="description" content="Machine learning and AI capabilities applied to finance — churn prediction, customer segmentation and LLM-powered reporting, deployed by a CFO who understands the business context." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
@@ -45,7 +45,7 @@
   <section class="section">
     <div class="section-header">
       <span class="eyebrow">The Capability Stack</span>
-      <h2>Four Ways AI Changes What a CFO Can Deliver</h2>
+      <h2>Three Ways AI Changes What a CFO Can Deliver</h2>
       <p>Each capability below maps a specific machine learning technique to a finance outcome — with the methodology, the tools and the business context all understood by the same person deploying it.</p>
     </div>
     <div class="ai-stack-grid">
@@ -61,19 +61,6 @@
         </div>
         <p>Classification models trained on historical customer data to predict future behaviour. In a SaaS context this means a weekly churn risk score per account — a probability that a given customer will cancel in the next 30, 60 or 90 days. Features include login frequency, feature adoption rate, support ticket volume, payment behaviour and contract age. XGBoost and Random Forest consistently outperform simpler models on real SaaS datasets.</p>
         <p>The same framework applies to attrition risk for PE portfolio companies, lead conversion probability from CRM data, and loan default risk in financial services. The model output is always actionable: a ranked list of accounts or individuals requiring intervention, with the probability score quantifying urgency.</p>
-      </div>
-
-      <div class="ai-stack-card">
-        <div class="stack-icon"><i class="fa-solid fa-chart-line"></i></div>
-        <h3>Time Series Forecasting</h3>
-        <div class="tech-list">
-          <span class="tech-tag">ARIMA</span>
-          <span class="tech-tag">SARIMAX</span>
-          <span class="tech-tag">statsmodels</span>
-          <span class="tech-tag">Matrix Factorisation</span>
-        </div>
-        <p>Statistically-grounded forecasting models that replace manual extrapolation with techniques designed for time-dependent data. ARIMA (AutoRegressive Integrated Moving Average) handles non-seasonal series with trend — appropriate for rolling cashflow models and ARR run-rate forecasting. SARIMAX adds seasonal and exogenous variables — essential for events businesses with annual cycles and known external drivers (venue bookings, sponsor commitments).</p>
-        <p>The key practical difference from Excel: ARIMA/SARIMAX output includes confidence intervals, so boards see a range of outcomes rather than a single line that pretends to be certain. Stationarity testing (ADF test) and ACF/PACF analysis inform model selection. Applied directly in client work.</p>
       </div>
 
       <div class="ai-stack-card">
@@ -137,8 +124,8 @@
       </div>
       <div class="mit-course-card">
         <span class="course-num">Course 4</span>
-        <h4>Ensemble Methods &amp; Time Series</h4>
-        <p>Random Forest, XGBoost, AdaBoost, Gradient Boosting. ARIMA and SARIMAX time-series forecasting applied to CPI, Bitcoin and crude oil — methodology used directly in cashflow models.</p>
+        <h4>Ensemble Methods &amp; Classification</h4>
+        <p>Random Forest, XGBoost, AdaBoost, Gradient Boosting — applied to classification problems including churn prediction, loan default and employee attrition. The ensemble framework underpinning the SaaS churn risk scoring model.</p>
       </div>
       <div class="mit-course-card">
         <span class="course-num">Course 5</span>
@@ -148,7 +135,7 @@
       <div class="mit-course-card">
         <span class="course-num">Course 6</span>
         <h4>Recommendation Systems</h4>
-        <p>Collaborative filtering (KNN, SVD), matrix factorisation. Applied to SaaS product affinity and cross-sell targeting. Matrix factorisation for multi-stream revenue forecasting.</p>
+        <p>Collaborative filtering (KNN, SVD), matrix factorisation. Applied to SaaS product affinity and cross-sell targeting.</p>
       </div>
       <div class="mit-course-card">
         <span class="course-num">Capstone</span>
@@ -168,7 +155,7 @@
       <h2>How These Models Deploy in Client Engagements</h2>
       <p>Each example below is a concrete deployment — not a proof of concept, but a working system built alongside CFO-level finance leadership in a real business.</p>
     </div>
-    <div class="ai-deploy-grid">
+    <div class="ai-deploy-grid" style="grid-template-columns:repeat(2,1fr);">
 
       <div class="ai-deploy-card">
         <div class="service-icon" style="margin-bottom:1rem;"><i class="fa-solid fa-brain"></i></div>
@@ -176,14 +163,6 @@
         <p>A Random Forest or XGBoost classifier is trained on 12&ndash;24 months of customer behaviour data: login frequency, feature adoption, support ticket volume, payment behaviour and contract age. The model is re-scored weekly and produces a churn probability per account.</p>
         <p>The output is a ranked list of at-risk customers — not a chart, but a prioritised intervention queue for the customer success team. The customer who was 8% risk last week and is 34% this week gets a call before the one who has been flat at 15% for a month.</p>
         <div class="deploy-result">Typical result: 3&ndash;6 weeks of advance warning on accounts that would otherwise churn without notice.</div>
-      </div>
-
-      <div class="ai-deploy-card">
-        <div class="service-icon" style="margin-bottom:1rem;"><i class="fa-solid fa-chart-line"></i></div>
-        <h3>ARIMA 12-Week Cashflow</h3>
-        <p>The manual 12-week cashflow model is rebuilt as an ARIMA/SARIMAX time-series, trained on historical weekly cash movements. Stationarity is tested (ADF test), differencing applied where needed, and ACF/PACF plots used to select ARIMA order parameters.</p>
-        <p>The output is a 12-week forward forecast with a 95% confidence interval — so boards see the expected line and the range of plausible outcomes. For events businesses with seasonal receipt patterns, SARIMAX captures the seasonal component explicitly. Updated weekly, not rebuilt monthly.</p>
-        <div class="deploy-result">Applied directly at Raccoon Media Group to prevent a PE-backed cashflow shortfall.</div>
       </div>
 
       <div class="ai-deploy-card">
@@ -205,7 +184,7 @@
       <p>Croftlands Consulting does not just advise on AI adoption — it runs on it. Every analytical tool, financial model and client deliverable is built and maintained using Claude Code and the Anthropic API as active collaborators in the work.</p>
     </div>
     <div style="max-width:780px;margin:0 auto;">
-      <p>Most CFOs who talk about AI are referencing a vendor product they have seen demonstrated. This is different. The Claude API is used to build the finance tools themselves — generating Python code for churn models, writing and debugging ARIMA forecast scripts, automating data pipelines and producing first drafts of board commentary. Claude Code (Anthropic&rsquo;s AI coding assistant) is used to build and maintain the analytical infrastructure.</p>
+      <p>Most CFOs who talk about AI are referencing a vendor product they have seen demonstrated. This is different. The Claude API is used to build the finance tools themselves — generating Python code for churn models, automating data pipelines and producing first drafts of board commentary. Claude Code (Anthropic&rsquo;s AI coding assistant) is used to build and maintain the analytical infrastructure.</p>
       <p>This means two things for clients. First, the turnaround on analytical tools is faster than traditional consulting — a churn scoring model or cashflow forecast can be prototyped, tested and deployed in days rather than weeks. Second, the tools are explainable: because the CFO understands the code and the methodology, they can explain to your board and your PE investor exactly how the churn probability was calculated and what assumptions drive the forecast.</p>
       <p>It also means Croftlands Consulting can advise on your own AI adoption strategy from a position of genuine practical experience — not from a sales deck, but from running these systems in a live finance practice.</p>
       <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
@@ -252,7 +231,7 @@
             <li><a href="ai-data.html#capability-stack">Capability Stack</a></li>
             <li><a href="ai-data.html">MIT Programme</a></li>
             <li><a href="insights/churn-prediction.html">Churn Prediction</a></li>
-            <li><a href="insights/arima-cashflow.html">ARIMA Cashflow</a></li>
+            <li><a href="insights/cashflow-model.html">Cashflow Modelling</a></li>
             <li><a href="insights/genai-cfo.html">GenAI for CFOs</a></li>
           </ul>
         </div>

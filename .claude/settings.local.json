@@ -6,7 +6,18 @@
       "Read(//c/Users/graem/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/18cc6eaf-16c6-4926-b740-828529809986/cb64e6b3-2cd0-4c1f-8199-03eea6c12b36/skills/docx/**)",
       "Bash(pandoc \"C:\\\\Users\\\\graem\\\\OneDrive - Croftlands Capital Ltd\\\\Graeme Personal\\\\CV\\\\Graeme Weeden  Finance Director CV.docx\" -t markdown)",
       "Bash(pandoc --version)",
-      "PowerShell(Get-ChildItem \"G:\\\\My Drive\\\\GreatLearning - Applied AI and Data Science\" -Recurse -Depth 4 | Where-Object { $_.Extension -in \".ipynb\",\".py\",\".pdf\",\".docx\",\".pptx\" } | Select-Object FullName | Format-Table -AutoSize -Wrap)"
+      "PowerShell(Get-ChildItem \"G:\\\\My Drive\\\\GreatLearning - Applied AI and Data Science\" -Recurse -Depth 4 | Where-Object { $_.Extension -in \".ipynb\",\".py\",\".pdf\",\".docx\",\".pptx\" } | Select-Object FullName | Format-Table -AutoSize -Wrap)",
+      "Bash(git config *)",
+      "Bash(node -e \"require\\('docx'\\); console.log\\('docx ok'\\);\")",
+      "PowerShell(npm install -g docx 2>&1)",
+      "PowerShell($env:NODE_PATH = \"C:\\\\Users\\\\graem\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\"; node -e \"const docx = require\\('docx'\\); console.log\\('ok', Object.keys\\(docx\\).slice\\(0,5\\).join\\(','\\)\\);\")",
+      "PowerShell($f = \"C:\\\\Users\\\\graem\\\\OneDrive - Croftlands Capital Ltd\\\\Graeme Personal\\\\CV\\\\Graeme Weeden CV 2025.docx\"; if \\(Test-Path $f\\) { $i = Get-Item $f; \"File: $\\($i.Name\\)\"; \"Size: $\\([math]::Round\\($i.Length/1024,1\\)\\) KB\"; \"Modified: $\\($i.LastWriteTime\\)\" } else { \"NOT FOUND\" })",
+      "Bash(python -c \"import reportlab; print\\(reportlab.__version__\\)\")",
+      "Bash(python build_spec_pdf.py)",
+      "Bash(python -c \"from pypdf import PdfReader; r=PdfReader\\('CrossLLM_Chat_Index_v1_Spec.pdf'\\); print\\('Pages:', len\\(r.pages\\)\\)\")",
+      "WebFetch(domain:omnigent.ai)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
