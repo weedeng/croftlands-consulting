@@ -17,7 +17,13 @@
       "Bash(python -c \"from pypdf import PdfReader; r=PdfReader\\('CrossLLM_Chat_Index_v1_Spec.pdf'\\); print\\('Pages:', len\\(r.pages\\)\\)\")",
       "WebFetch(domain:omnigent.ai)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(cat)",
+      "Bash(PYTHONIOENCODING=utf-8 py repack.py)",
+      "Bash(PYTHONIOENCODING=utf-8 py __TRACKED_VAR__/scripts/office/soffice.py --headless --convert-to pdf cv_new.docx)",
+      "Bash(ls \"/c/Program Files/LibreOffice/program/soffice.exe\" \"/c/Program Files \\(x86\\)/LibreOffice/program/soffice.exe\" 2>&1; which soffice libreoffice 2>&1)",
+      "Bash(cp cv_new.docx \"C:/Users/graem/OneDrive - Croftlands Capital Ltd/Graeme Personal/CV/Graeme Weeden CV 202607.docx\")",
+      "Read(//c/Users/graem/OneDrive - Croftlands Capital Ltd/Graeme Personal/CV/**)"
     ]
   }
 }
