@@ -23,7 +23,18 @@
       "Bash(PYTHONIOENCODING=utf-8 py __TRACKED_VAR__/scripts/office/soffice.py --headless --convert-to pdf cv_new.docx)",
       "Bash(ls \"/c/Program Files/LibreOffice/program/soffice.exe\" \"/c/Program Files \\(x86\\)/LibreOffice/program/soffice.exe\" 2>&1; which soffice libreoffice 2>&1)",
       "Bash(cp cv_new.docx \"C:/Users/graem/OneDrive - Croftlands Capital Ltd/Graeme Personal/CV/Graeme Weeden CV 202607.docx\")",
-      "Read(//c/Users/graem/OneDrive - Croftlands Capital Ltd/Graeme Personal/CV/**)"
+      "Read(//c/Users/graem/OneDrive - Croftlands Capital Ltd/Graeme Personal/CV/**)",
+      "Read(//c/Users/graem/OneDrive - Croftlands Capital Ltd/CS/CS50/CS50 Projects/cs50-final-project/**)",
+      "Bash(pandoc -t markdown \"strategic roadmap fx app.docx\")",
+      "Bash(python -c \"import docx; print\\('python-docx OK', docx.__version__\\)\")",
+      "Bash(python -c \"import mammoth; print\\('mammoth OK'\\)\")",
+      "Bash(mkdir -p /c/Users/graem/AppData/Local/Temp/claude/C--Users-graem-Website-buildout/75672901-aab1-4304-b012-196a2ed34bb3/scratchpad/fxdoc)",
+      "Read(//c/Users/graem/AppData/Local/Temp/claude/C--Users-graem-Website-buildout/75672901-aab1-4304-b012-196a2ed34bb3/scratchpad/**)",
+      "Bash(unzip -oq \"/c/Users/graem/OneDrive - Croftlands Capital Ltd/CS/CS50/CS50 Projects/cs50-final-project/strategic roadmap fx app.docx\" -d unpacked)",
+      "Bash(python -)",
+      "Bash(node -e \"const d=require\\('docx'\\); console.log\\('docx OK', Object.keys\\(d\\).length, 'exports'\\)\")",
+      "Bash(npm install *)",
+      "Bash(node gen.js)"
     ]
   }
 }
