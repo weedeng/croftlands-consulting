@@ -34,7 +34,8 @@
       "Bash(python -)",
       "Bash(node -e \"const d=require\\('docx'\\); console.log\\('docx OK', Object.keys\\(d\\).length, 'exports'\\)\")",
       "Bash(npm install *)",
-      "Bash(node gen.js)"
+      "Bash(node gen.js)",
+      "Bash(grep -viE \":[0-9]+:\\(size|sizes|sized|sizing|prize|prizes\\)$\")"
     ]
   }
 }
