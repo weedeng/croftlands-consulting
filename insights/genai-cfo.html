@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Generative AI for CFOs: What the Claude API Can Do in a Finance Team | Croftlands Consulting</title>
-  <meta name="description" content="How LLM pipelines using the Claude and OpenAI APIs automate board pack commentary, variance narratives and financial document analysis — with practical examples and the prompt engineering patterns that make them reliable." />
+  <title>Generative AI for CFOs: What Enterprise LLMs Can Do in a Finance Team | Croftlands Consulting</title>
+  <meta name="description" content="How LLM pipelines using enterprise LLM APIs automate board pack commentary, variance narratives and financial document analysis — with practical examples and the prompt engineering patterns that make them reliable." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
@@ -36,8 +36,8 @@
   <section class="page-hero">
     <div class="page-hero-content">
       <span class="eyebrow">Generative AI &middot; Insight</span>
-      <h1>Generative AI for CFOs: What the Claude API Can Actually Do in a Finance Team</h1>
-      <p class="lead">How LLM pipelines using the Claude and OpenAI APIs automate board pack commentary, variance narratives and financial document analysis — with practical examples and the prompt engineering patterns that make them reliable enough to use in production.</p>
+      <h1>Generative AI for CFOs: What Enterprise LLMs Can Actually Do in a Finance Team</h1>
+      <p class="lead">How LLM pipelines using enterprise LLM APIs automate board pack commentary, variance narratives and financial document analysis — with practical examples and the prompt engineering patterns that make them reliable enough to use in production.</p>
     </div>
   </section>
 
@@ -47,7 +47,7 @@
 
         <p>The CFO spends an extraordinary amount of time writing text that is largely formulaic: variance commentary for the board pack, narrative descriptions of performance against budget, summaries of financial reports for non-finance stakeholders. These are not low-value activities — the board needs to understand what the numbers mean — but the actual writing is often repetitive: &ldquo;Revenue was £Xm, ahead of budget by £Yk, driven primarily by stronger-than-expected performance in [segment].&rdquo; Large language models can draft this text reliably, accurately and in seconds, from structured financial data.</p>
 
-        <p>This article is about the practical mechanics of building these pipelines using the Claude API and OpenAI GPT — what the inputs are, how the prompts are structured, and what the output quality is like in practice. It is not about using a general-purpose chatbot. It is about building a repeatable, automated pipeline that runs as part of the monthly close process.</p>
+        <p>This article is about the practical mechanics of building these pipelines using enterprise LLM APIs — what the inputs are, how the prompts are structured, and what the output quality is like in practice. It is not about using a general-purpose chatbot. It is about building a repeatable, automated pipeline that runs as part of the monthly close process.</p>
 
         <h2>The Problem LLMs Actually Solve in Finance</h2>
         <p>Generative AI does not replace financial judgment. It does not set strategy, challenge assumptions, or tell you whether the revenue growth is real or a result of a change in recognition policy. What it does well is producing first-draft prose from structured data — which is exactly what board commentary is.</p>
@@ -74,7 +74,7 @@
           <li>A <strong>task instruction</strong> that specifies exactly what to write: &ldquo;Write the P&amp;L commentary section (200&ndash;300 words). Cover: (1) revenue versus budget and PY, key drivers; (2) gross margin movement; (3) operating cost movements; (4) EBITDA bridge.&rdquo;</li>
         </ul>
 
-        <p><strong>Stage 3: API call.</strong> The assembled prompt is sent to the Claude API (using Anthropic&rsquo;s Python SDK) or the OpenAI API. The response is the draft commentary text. The Python script saves it to a file, pastes it into the board pack template, or emails it to the CFO for review — whichever is most useful in the specific workflow.</p>
+        <p><strong>Stage 3: API call.</strong> The assembled prompt is sent to an enterprise LLM API via its Python SDK. The response is the draft commentary text. The Python script saves it to a file, pastes it into the board pack template, or emails it to the CFO for review — whichever is most useful in the specific workflow.</p>
 
         <h2>Prompt Engineering: What Makes It Reliable</h2>
         <p>The difference between an LLM commentary pipeline that is useful in production and one that produces unreliable output is almost entirely in the prompt engineering. Four patterns make the difference:</p>
@@ -101,15 +101,15 @@
           <li><strong>Audit response drafting:</strong> Standard audit queries on accounting policy and disclosure often have standard answers. An LLM pipeline that retrieves the relevant policy documentation and drafts the response can significantly reduce the time the finance team spends on audit support.</li>
         </ul>
 
-        <h2>Claude vs. GPT: Which One to Use</h2>
-        <p>Both Claude (Anthropic) and GPT (OpenAI) produce high-quality output for finance commentary tasks. The practical differences are:</p>
+        <h2>Choosing a Model: Which One to Use</h2>
+        <p>The leading enterprise LLMs all produce high-quality output for finance commentary tasks. The practical differences that matter are:</p>
 
         <ul>
-          <li><strong>Claude</strong> tends to produce more consistently well-structured output from detailed system prompts. It is particularly good at following complex formatting instructions and maintaining a consistent tone across a long document. The Anthropic API is clean and well-documented.</li>
-          <li><strong>GPT</strong> is slightly more creative in its language, which can be a strength for external-facing narrative but a slight risk for internal board commentary where a consistent, formal voice is preferred. The OpenAI ecosystem has more tooling around it, which matters if you are building a more complex product.</li>
+          <li><strong>Instruction-following and structure</strong> — for board commentary you want a model that reliably follows a detailed system prompt, holds a consistent format, and maintains one voice across a long document. Prioritise this for internal reporting.</li>
+          <li><strong>Creativity and ecosystem</strong> — some models are more expansive in their language, which suits external-facing narrative, and some sit in richer tooling ecosystems, which matters if you are building a more complex product around the pipeline.</li>
         </ul>
 
-        <p>For internal finance commentary, Claude is the default choice. For applications where the output is more varied or creative — external investor communications, for example — the differences are marginal and either works well.</p>
+        <p>For internal finance commentary, prioritise instruction-following and structure. For more varied or creative output — external investor communications, for example — the differences narrow and most enterprise models perform well.</p>
 
         <p>The more important factor is the quality of the prompt. A well-engineered prompt produces excellent output from either model; a poorly structured prompt produces mediocre output from both. Investment in prompt engineering pays off across the board — and the same system prompt, carefully refined once, can run every monthly close cycle for the entire engagement without modification.</p>
 
