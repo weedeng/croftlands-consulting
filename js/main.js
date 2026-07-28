@@ -92,4 +92,64 @@
     });
   }
 
+  /* ── Booking modal (Microsoft Bookings) ───────────────── */
+  const BOOKING_URL =
+    'https://outlook.office.com/book/CroftlandsConsultingnew@croftlandsconsulting.com/?ismsaljsauthenabled';
+
+  const bookModal = document.createElement('div');
+  bookModal.className = 'book-modal';
+  bookModal.setAttribute('role', 'dialog');
+  bookModal.setAttribute('aria-modal', 'true');
+  bookModal.setAttribute('aria-label', 'Book a discovery call');
+  bookModal.innerHTML =
+    '<div class="book-modal-panel">' +
+      '<div class="book-modal-bar">' +
+        '<span>Book a Discovery Call</span>' +
+        '<button type="button" class="book-modal-close" aria-label="Close">&times;</button>' +
+      '</div>' +
+      '<div class="book-modal-body"></div>' +
+    '</div>';
+  document.body.appendChild(bookModal);
+
+  const bookBody  = bookModal.querySelector('.book-modal-body');
+  const bookClose = bookModal.querySelector('.book-modal-close');
+
+  function openBooking () {
+    // Lazy-load the iframe only on first open
+    if (!bookBody.querySelector('iframe')) {
+      const f = document.createElement('iframe');
+      f.src = BOOKING_URL;
+      f.title = 'Microsoft Bookings — Croftlands Consulting';
+      f.setAttribute('loading', 'lazy');
+      bookBody.appendChild(f);
+    }
+    bookModal.classList.add('open');
+    document.body.classList.add('book-modal-lock');
+    bookClose.focus();
+  }
+  function closeBooking () {
+    bookModal.classList.remove('open');
+    document.body.classList.remove('book-modal-lock');
+  }
+
+  bookClose.addEventListener('click', closeBooking);
+  bookModal.addEventListener('click', function (e) {
+    if (e.target === bookModal) closeBooking();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && bookModal.classList.contains('open')) closeBooking();
+  });
+
+  // Any "Book a Discovery Call" link/button (or [data-book]) opens the modal.
+  // The underlying href="contact.html" remains a fallback if JS fails to load.
+  document.querySelectorAll('a, button').forEach(function (el) {
+    const txt = (el.textContent || '').trim().toLowerCase();
+    if (el.hasAttribute('data-book') || txt === 'book a discovery call') {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openBooking();
+      });
+    }
+  });
+
 })();
