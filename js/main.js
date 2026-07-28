@@ -94,7 +94,7 @@
 
   /* ── Booking modal (Microsoft Bookings) ───────────────── */
   const BOOKING_URL =
-    'https://outlook.office.com/book/CroftlandsConsulting@croftlandsconsulting.com/s/ZoCCIasKRESz28sB0KAJZQ2?ismsaljsauthenabled';
+    'https://outlook.office.com/owa/calendar/CroftlandsConsulting@croftlandsconsulting.com/bookings/?ismsaljsauthenabled';
 
   const bookModal = document.createElement('div');
   bookModal.className = 'book-modal';
